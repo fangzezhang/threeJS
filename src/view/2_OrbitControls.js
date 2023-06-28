@@ -6,6 +6,7 @@ import Stats from 'stats.js';
 export default function _OrbitControls() {
   const div = useRef(null);
   let req;
+  const stats = new Stats();
   const initRenderer = () => {
     const scene = new THREE.Scene();
 
@@ -42,7 +43,6 @@ export default function _OrbitControls() {
     });
 
     const clock = new THREE.Clock();
-    const stats = new Stats();
     document.body.appendChild(stats.domElement);
     function animation() {
       const spt = clock.getDelta() * 1000; // 毫秒
@@ -95,6 +95,8 @@ export default function _OrbitControls() {
       node.removeChild(renderer.domElement);
       renderer.dispose();
       cancelAnimationFrame(req);
+      stats.end();
+      document.body.removeChild(stats.domElement);
     };
   }, []);
 
