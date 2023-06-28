@@ -51,6 +51,14 @@ export default function _OrbitControls() {
     }
     animation();
 
+    window.onresize = function () {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      // 渲染器执行 render 方法时会读取相机对象的投影矩阵属性 projectionMatrix, 但不会渲染每一帧都通过相机属性计算投影矩阵
+      // 相机属性发生变化, 需要执行 updateProjectionMatrix() 更新相机的投影矩阵
+      camera.updateProjectionMatrix();
+    };
+
     return renderer;
   };
 
