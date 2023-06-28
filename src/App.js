@@ -3,14 +3,16 @@ import './App.css';
 import First3D from "./view/1_First3D";
 import Sun from "./view/1_Sun";
 import OrbitControls from "./view/2_OrbitControls";
+import ArrayCube from "./view/3_ArrayCube";
 import Hoc from "./view/component/Hoc";
 
 function App() {
-  const list = ['First3D', 'Sun', 'OrbitControls'];
+  const list = ['First3D', 'Sun', 'OrbitControls', 'ArrayCube'];
   const map = {
     First3D,
     Sun,
     OrbitControls,
+    ArrayCube,
   };
 
   const [componentName, setComponentName] = useState('First3D');
