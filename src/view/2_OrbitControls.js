@@ -4,6 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export default function _OrbitControls() {
   const div = useRef(null);
+  let req;
   const initRenderer = () => {
     const scene = new THREE.Scene();
 
@@ -35,13 +36,18 @@ export default function _OrbitControls() {
     // 缩放: 滚动鼠标中键
     // 平移: 拖动鼠标右键
     controls.addEventListener('change', () => {
-      renderer.render(scene, camera);
+      // 设立的 animation 就不需要再通过 change 执行 render 了, 因为 animation 一直在执行 renderer.render();
+      // renderer.render(scene, camera);
     });
 
+    const clock = new THREE.Clock();
     function animation() {
+      const spt = clock.getDelta() * 1000; // 毫秒
+      console.info('两帧之间的时间间隔: ' + spt);
+      console.info('帧率FPS: ' + 1000 / spt);
       mesh.rotateY(0.01);
       renderer.render(scene, camera);
-      requestAnimationFrame(animation);
+      req = requestAnimationFrame(animation);
     }
     animation();
 
@@ -56,6 +62,8 @@ export default function _OrbitControls() {
 
     return () => {
       node.removeChild(renderer.domElement);
+      renderer.dispose();
+      cancelAnimationFrame(req);
     };
   }, []);
 

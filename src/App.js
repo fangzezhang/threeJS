@@ -2,13 +2,15 @@ import React, {useState} from "react";
 import './App.css';
 import First3D from "./view/1_First3D";
 import Sun from "./view/1_Sun";
+import OrbitControls from "./view/2_OrbitControls";
 import Hoc from "./view/component/Hoc";
 
 function App() {
-  const list = ['First3D', 'Sun'];
+  const list = ['First3D', 'Sun', 'OrbitControls'];
   const map = {
     First3D,
-    Sun
+    Sun,
+    OrbitControls,
   };
 
   const [componentName, setComponentName] = useState('First3D');
