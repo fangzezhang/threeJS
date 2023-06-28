@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import Stats from 'stats.js';
 
 export default function _OrbitControls() {
   const div = useRef(null);
@@ -41,15 +42,37 @@ export default function _OrbitControls() {
     });
 
     const clock = new THREE.Clock();
+    const stats = new Stats();
+    document.body.appendChild(stats.domElement);
     function animation() {
       const spt = clock.getDelta() * 1000; // 毫秒
       console.info('两帧之间的时间间隔: ' + spt);
       console.info('帧率FPS: ' + 1000 / spt);
+
+      stats.update();
+
       mesh.rotateY(0.01);
       renderer.render(scene, camera);
       req = requestAnimationFrame(animation);
     }
     animation();
+
+    function test() {
+      for (let i = 0; i < 1000; i++) {
+        const geometry = new THREE.BoxGeometry(5, 5, 5);
+        const material = new THREE.MeshLambertMaterial({
+          color: 0x00ffff,
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        const x = (Math.random() - 0.5) * 200;
+        const y = (Math.random() - 0.5) * 200;
+        const z = (Math.random() - 0.5) * 200;
+        mesh.position.set(x, y, z);
+        scene.add(mesh);
+      }
+    }
+
+    test();
 
     window.onresize = function () {
       renderer.setSize(window.innerWidth, window.innerHeight);
