@@ -3,7 +3,6 @@
  */
 
 export default function WrapperHOC(props) {
-  console.info(props);
   const children = props.children;
 
   if (!children) return null;

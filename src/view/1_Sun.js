@@ -39,6 +39,7 @@ export default function First3D() {
 
     function animate() {
       requestAnimationFrame(animate);
+      // mesh.rotateY(0.01);
       mesh.position.y += 0.01;
       renderer.render(scene, camera);
     }
