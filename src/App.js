@@ -13,7 +13,7 @@ import Line from "./view/bufferGeometry/2.Line";
 function App() {
   const list = {
     QuickStart: ['First3D', 'Sun', 'OrbitControls', 'ArrayCube', 'PhongAndSetRenderer', 'GuiLib'],
-    BufferGeometry: ['Points']
+    BufferGeometry: ['Points', 'Line']
   };
   const map = {
     First3D,
@@ -23,6 +23,7 @@ function App() {
     PhongAndSetRenderer,
     GuiLib,
     Points,
+    Line,
   };
 
   const [componentName, setComponentName] = useState('First3D');
