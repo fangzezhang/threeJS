@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import './App.css';
 import Hoc from "./view/component/Hoc";
-import First3D from "./view/1_First3D";
-import Sun from "./view/1_Sun";
-import OrbitControls from "./view/2_OrbitControls";
-import ArrayCube from "./view/3_ArrayCube";
-import PhongAndSetRenderer from "./view/4_PhongAndSetRenderer";
-import GuiLib from "./view/5_GuiLib";
+import First3D from "./view/quickStart/1_First3D";
+import Sun from "./view/quickStart/1_Sun";
+import OrbitControls from "./view/quickStart/2_OrbitControls";
+import ArrayCube from "./view/quickStart/3_ArrayCube";
+import PhongAndSetRenderer from "./view/quickStart/4_PhongAndSetRenderer";
+import GuiLib from "./view/quickStart/5_GuiLib";
 
 function App() {
   const list = ['First3D', 'Sun', 'OrbitControls', 'ArrayCube', 'PhongAndSetRenderer', 'GuiLib'];
