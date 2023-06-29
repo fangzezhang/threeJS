@@ -7,9 +7,14 @@ import OrbitControls from "./view/quickStart/2_OrbitControls";
 import ArrayCube from "./view/quickStart/3_ArrayCube";
 import PhongAndSetRenderer from "./view/quickStart/4_PhongAndSetRenderer";
 import GuiLib from "./view/quickStart/5_GuiLib";
+import Points from "./view/bufferGeometry/1.Points";
+import Line from "./view/bufferGeometry/2.Line";
 
 function App() {
-  const list = ['First3D', 'Sun', 'OrbitControls', 'ArrayCube', 'PhongAndSetRenderer', 'GuiLib'];
+  const list = {
+    QuickStart: ['First3D', 'Sun', 'OrbitControls', 'ArrayCube', 'PhongAndSetRenderer', 'GuiLib'],
+    BufferGeometry: ['Points']
+  };
   const map = {
     First3D,
     Sun,
@@ -17,6 +22,7 @@ function App() {
     ArrayCube,
     PhongAndSetRenderer,
     GuiLib,
+    Points,
   };
 
   const [componentName, setComponentName] = useState('First3D');
@@ -24,16 +30,19 @@ function App() {
     return <Hoc>{React.createElement(map[componentName], {key: componentName})}</Hoc>;
   };
 
-  const elements = [];
-  for (let i of list) {
-    elements.push(<button key={i} onClick={() => setComponentName(i)}>{ i }</button>)
-  }
-
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          { elements }
+          {
+            Object.keys(list).map(key => (
+              <div key={key}>
+                {key}: {list[key].map(val => (
+                  <button key={val} onClick={() => setComponentName(val)}>{ val }</button>
+                ))}
+              </div>
+            ))
+          }
         </div>
         <div>
           {renderComponent()}
