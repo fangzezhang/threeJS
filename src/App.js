@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './App.css';
-import Hoc from "./view/component/Hoc";
+import Hoc from "./component/Hoc";
 import First3D from "./view/quickStart/1_First3D";
 import Sun from "./view/quickStart/1_Sun";
 import OrbitControls from "./view/quickStart/2_OrbitControls";
