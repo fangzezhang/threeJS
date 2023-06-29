@@ -1,9 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
-export default function Points() {
+export default function Mesh() {
   const div = useRef(null);
+
   const initRenderer = () => {
     const scene = new THREE.Scene();
 
@@ -17,13 +18,13 @@ export default function Points() {
     ]);
     const attribute = new THREE.BufferAttribute(vertices, 3);
     const geometry = new THREE.BufferGeometry();
-    geometry.attributes.position = attribute;
-    const material = new THREE.PointsMaterial({
-      color: 'red',
-      size: 10.0,
+    geometry.setAttribute('position', attribute);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x0000ff,
+      side: THREE.DoubleSide,
     });
-    const points = new THREE.Points(geometry, material);
-    scene.add(points);
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
     const camera = new THREE.PerspectiveCamera(30, 800 / 500, 1, 2000);
     camera.position.set(200, 200, 300);

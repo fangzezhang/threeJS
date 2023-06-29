@@ -9,11 +9,12 @@ import PhongAndSetRenderer from "./view/quickStart/4_PhongAndSetRenderer";
 import GuiLib from "./view/quickStart/5_GuiLib";
 import Points from "./view/bufferGeometry/1.Points";
 import Line from "./view/bufferGeometry/2.Line";
+import MeshTriangle from "./view/bufferGeometry/3.MeshTriangle";
 
 function App() {
   const list = {
     QuickStart: ['First3D', 'Sun', 'OrbitControls', 'ArrayCube', 'PhongAndSetRenderer', 'GuiLib'],
-    BufferGeometry: ['Points', 'Line']
+    BufferGeometry: ['Points', 'Line', 'MeshTriangle']
   };
   const map = {
     First3D,
@@ -24,6 +25,7 @@ function App() {
     GuiLib,
     Points,
     Line,
+    MeshTriangle,
   };
 
   const [componentName, setComponentName] = useState('First3D');
@@ -36,9 +38,9 @@ function App() {
       <header className="App-header">
         <div>
           {
-            Object.keys(list).map(key => (
+            Object.keys(list).map((key, index) => (
               <div key={key}>
-                {key}: {list[key].map(val => (
+                {index + 1}.{key}: {list[key].map(val => (
                   <button key={val} onClick={() => setComponentName(val)}>{ val }</button>
                 ))}
               </div>
