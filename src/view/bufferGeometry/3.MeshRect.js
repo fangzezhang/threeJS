@@ -8,7 +8,7 @@ export default function MeshRect() {
   const initRenderer = () => {
     const scene = new THREE.Scene();
 
-    const vertices = new Float32Array([
+    /*const vertices = new Float32Array([
       0, 0, 0, //顶点1坐标
       80, 0, 0, //顶点2坐标
       80, 80, 0, //顶点3坐标
@@ -16,8 +16,20 @@ export default function MeshRect() {
       80, 80, 0, //顶点5坐标  和顶点3位置相同
       0, 80, 0, //顶点6坐标
     ]);
-    const attribute = new THREE.BufferAttribute(vertices, 3);
+    */
+    // 通过 index 去除重复坐标
+    const vertices = new Float32Array([
+      0, 0, 0, //顶点1坐标
+      80, 0, 0, //顶点2坐标
+      80, 80, 0, //顶点3坐标
+      0, 80, 0, //顶点6坐标
+    ]);
     const geometry = new THREE.BufferGeometry();
+    const attribute = new THREE.BufferAttribute(vertices, 3);
+    const index = new Uint16Array([
+      0, 1, 2, 0, 2, 3
+    ]);
+    geometry.index = new THREE.BufferAttribute(index, 1);
     geometry.setAttribute('position', attribute);
     const material = new THREE.MeshBasicMaterial({
       color: 0x00ffff,
