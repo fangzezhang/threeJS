@@ -10,11 +10,12 @@ import GuiLib from "./view/quickStart/5_GuiLib";
 import Points from "./view/bufferGeometry/1.Points";
 import Line from "./view/bufferGeometry/2.Line";
 import MeshTriangle from "./view/bufferGeometry/3.MeshTriangle";
+import MeshRect from "./view/bufferGeometry/3.MeshRect";
 
 function App() {
   const list = {
     QuickStart: ['First3D', 'Sun', 'OrbitControls', 'ArrayCube', 'PhongAndSetRenderer', 'GuiLib'],
-    BufferGeometry: ['Points', 'Line', 'MeshTriangle']
+    BufferGeometry: ['Points', 'Line', 'MeshTriangle', 'MeshRect']
   };
   const map = {
     First3D,
@@ -26,6 +27,7 @@ function App() {
     Points,
     Line,
     MeshTriangle,
+    MeshRect,
   };
 
   const [componentName, setComponentName] = useState('First3D');
