@@ -12,11 +12,13 @@ import Line from "./view/bufferGeometry/2.Line";
 import MeshTriangle from "./view/bufferGeometry/3.MeshTriangle";
 import MeshRect from "./view/bufferGeometry/3.MeshRect";
 import MeshRectNormal from "./view/bufferGeometry/3.MeshRectNormal";
+import Snow from "./view/VR/1.snow";
 
 function App() {
   const list = {
     QuickStart: ['First3D', 'Sun', 'OrbitControls', 'ArrayCube', 'PhongAndSetRenderer', 'GuiLib'],
-    BufferGeometry: ['Points', 'Line', 'MeshTriangle', 'MeshRect', 'MeshRectNormal']
+    BufferGeometry: ['Points', 'Line', 'MeshTriangle', 'MeshRect', 'MeshRectNormal'],
+    VR: ['Snow'],
   };
   const map = {
     First3D,
@@ -30,6 +32,7 @@ function App() {
     MeshTriangle,
     MeshRect,
     MeshRectNormal,
+    Snow,
   };
 
   const [componentName, setComponentName] = useState('First3D');
